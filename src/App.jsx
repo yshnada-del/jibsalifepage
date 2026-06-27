@@ -2,23 +2,40 @@ import React from 'react';
 
 const appUrl = 'https://new-jibsalife.vercel.app';
 const competitiveIcons = {
-  diary: 'https://www.figma.com/api/mcp/asset/081e0078-3a41-44a1-99a0-a59e334f78bc',
-  dictionary: 'https://www.figma.com/api/mcp/asset/e6e6d5ac-bfa1-4348-a181-fd69400c899b',
-  ttcare: 'https://www.figma.com/api/mcp/asset/5b21e3e6-9d6e-4120-bc2c-db11ccc2978a',
-  televet: 'https://www.figma.com/api/mcp/asset/7f2e34c6-2cf8-4823-8ee9-4efe558b7cf1',
-  fitpet: 'https://www.figma.com/api/mcp/asset/c2d5e04d-c091-4f0d-8fe9-2cae77fcc673',
-  petfriends: 'https://www.figma.com/api/mcp/asset/188df977-9d99-445b-9dbc-f481a222426e',
-  jibsalife: 'https://www.figma.com/api/mcp/asset/0687730c-3b20-4190-b687-57b84e35172a',
-  hospital: 'https://www.figma.com/api/mcp/asset/f841d57a-7937-4335-a0d8-9bf6bf84ee5a',
-  community: 'https://www.figma.com/api/mcp/asset/5047c531-4c8e-4b20-ba40-34b48974bffa',
-  ai: 'https://www.figma.com/api/mcp/asset/a54745d0-60fd-44a0-b999-94b4392c2728',
+  diary: '/icons/diary.png',
+  dictionary: '/icons/dictionary.png',
+  ttcare: '/icons/ttcare.png',
+  televet: '/icons/televet.png',
+  fitpet: '/icons/fitpet.png',
+  petfriends: '/icons/petfriends.png',
+  jibsalife: '/icons/jibsalife.png',
+  hospital: '/icons/hospital.png',
+  community: '/icons/community.png',
+  ai: '/icons/ai.png',
 };
-const mvpImages = [
-  'https://www.figma.com/api/mcp/asset/2ca2ea62-7ba6-4976-a505-31b650ddbdc4',
-  'https://www.figma.com/api/mcp/asset/9314725a-c3cc-4141-89cf-938eab065c20',
-  'https://www.figma.com/api/mcp/asset/7b04efee-7cf9-43d9-9a9b-f548861a4576',
-];
 
+const figmaFlowSections = [
+  'design-system-01',
+  'design-system-02',
+  'character-concept-01',
+  'character-naming',
+  'character-concept-02',
+  'service-concept',
+  'onboarding',
+  'login-page',
+  'health-01',
+  'health-02',
+  'calendar',
+  'home-01',
+  'home-02',
+  'home-03',
+  'my-page',
+  'petstagram',
+  'community-01',
+  'community-02',
+  'community-03',
+  'ai-chat',
+];
 function CoverDecor() {
   return (
     <div className="cover-decor" aria-hidden="true">
@@ -93,7 +110,8 @@ function QrCode() {
 
 function Hero() {
   return (
-    <section className="cover">
+    <section className="cover cover-figma">
+      <img className="figma-cover-image" src="/figma-cover.png" alt="집사인생 Figma cover" />
       <CoverDecor />
       <div className="cover-meta">
         <span>AI챗봇 지원 팬덤 커뮤니티 Mobile UX/UI 프로젝트</span>
@@ -348,7 +366,8 @@ function MarketResearch() {
         <div className="market-circles">
           {items.map(([title, body, source]) => (
             <article key={title}>
-              <span />
+              <span className="market-dot market-dot-a" />
+              <span className="market-dot market-dot-b" />
               <div>
                 <h3>{title}</h3>
                 <p>{body}</p>
@@ -371,6 +390,7 @@ function SurveyResearch() {
           title={<>반려동물 건강 관리 인식과 서비스 니즈를 파악하기 위해<br />구글폼 설문조사를 진행했습니다</>}
           desc={<>우리는 반려동물 건강 관리 과정에서 사용자의 정보 탐색 방식과 병원 방문 판단 기준,<br />AI 건강 관리 기능에 대한 인식과 필요를 중심으로 살펴보았습니다.</>}
         />
+        <img className="survey-board-image" src="/sections/survey-board.png" alt="" />
         <div className="survey-board">
           <article className="survey-card">
             <h3>Q1. 커뮤니티 활동과 연계된 추천, 보상, 랭킹 기능이 있다면 앱 참여와 행동 변화에 영향을 줄까요?</h3>
@@ -406,6 +426,7 @@ function PainPoint() {
   ];
   return (
     <section className="case-section pain-section">
+      <img className="pain-figma-image" src="/sections/pain-point.png" alt="" />
       <div className="case-inner">
         <div className="pain-map">
           {bubbles.map((text, index) => <span className={`bubble bubble-${index + 1}`} key={text}>{text}</span>)}
@@ -449,24 +470,14 @@ function PersonaCard({ type, quote, avatar, needs, steps }) {
 
 function Personas() {
   return (
-    <section className="persona-section">
-      <div className="persona-inner">
-        <PersonaCard
-          type="Persona 1: MAIN"
-          avatar="avatar-main"
-          quote="빠르고 정확하게 상태를 판단하고 케어 루틴을 기록으로 관리하고 싶어요."
-          needs="반려동물의 건강 변화와 기록을 한눈에 확인하고 싶다."
-          steps={['이상 징후 발견', '정보 탐색', '판단 혼란', '병원 고민', '관리 필요']}
-        />
-        <PersonaCard
-          type="Persona 2: SUB"
-          avatar="avatar-sub"
-          quote="우리 아이가 아파온 거 나만 보기 아까워요."
-          needs="일상의 기록을 공유하고 유사한 경험을 가진 보호자와 소통하고 싶다."
-          steps={['귀여운 순간 발견', '기록 욕구 발생', '정리 부담', '공유 고민', '참여 기대']}
-        />
-      </div>
-    </section>
+    <>
+      <section className="persona-section persona-figma-section">
+        <img className="persona-figma-image" src="/sections/persona-main-transparent.png" alt="" />
+      </section>
+      <section className="persona-section persona-figma-section">
+        <img className="persona-figma-image" src="/sections/persona-sub-transparent.png" alt="" />
+      </section>
+    </>
   );
 }
 
@@ -485,6 +496,7 @@ function InformationArchitecture() {
           eyebrow="Information Architecture"
           title="반려인의 기록과 건강 관리 흐름을 직관적으로 탐색할 수 있도록 설계했어요"
         />
+        <img className="ia-tree-image" src="/sections/ia-tree.png" alt="" />
         <div className="ia-tree">
           <div className="ia-root">집사인생</div>
           <div className="ia-groups">
@@ -502,31 +514,43 @@ function InformationArchitecture() {
 }
 
 function MvpGoal() {
-  const cards = [
-    ['“기록하기 귀찮아서\n중간에 그만두게 돼요”', '사진 한 장으로 기록 끝', '건강 기록 부담을 줄이고\n일상 속 데이터를 쉽게 쌓을 수 있도록 설계'],
-    ['“병원에 가야되는지 지켜봐야 되는지\n모르겠어요 반려동물이 걱정돼요”', 'AI 건강 판단 가이드', '초기 단계를 빠르게 진단하고\n필요시 수의사 안내를 도와드려요'],
-    ['“반려동물을 키우고 있는 집사들과\n정보를 나누고 싶어요”', '함께하는 집사 커뮤니티', '7일 챌린지와 커뮤니티로\n꾸준한 건강 기록 습관을 만들어요'],
-  ];
   return (
-    <section className="case-section">
-      <div className="case-inner mvp-inner">
-        <CaseHeader
-          eyebrow="MVP GOAL"
-          title={<>기록부터 건강관리까지, 반려생활을 하나로 연결하는 <em>AI 케어 서비스</em></>}
-        />
-        <div className="mvp-cards">
-          {cards.map(([quote, title, body], index) => (
-            <article key={title}>
-              <div className="mvp-quote">{quote}</div>
-              <img className="mvp-character" alt="" src={mvpImages[index]} />
-              <h3>{title}</h3>
-              <p>{body}</p>
-            </article>
-          ))}
-        </div>
-      </div>
+    <section className="case-section mvp-figma-section">
+      <img className="mvp-figma-image" src="/sections/mvp-goal-transparent.png" alt="" />
     </section>
   );
+}
+
+function Insight() {
+  return (
+    <section className="case-section insight-figma-section">
+      <img className="insight-figma-image" src="/sections/insight-transparent.png" alt="" />
+    </section>
+  );
+}
+
+function Wireframe() {
+  return (
+    <section className="case-section wireframe-figma-section">
+      <img className="wireframe-figma-image" src="/sections/wireframe.png" alt="" />
+    </section>
+  );
+}
+
+function UiDesign() {
+  return (
+    <section className="case-section ui-design-figma-section">
+      <img className="ui-design-figma-image" src="/sections/ui-design.png" alt="" />
+    </section>
+  );
+}
+
+function FigmaFlowSections() {
+  return figmaFlowSections.map((section) => (
+    <section className="case-section figma-flow-section" key={section}>
+      <img className="figma-flow-image" src={`/sections/${section}.png`} alt="" />
+    </section>
+  ));
 }
 
 function App() {
@@ -541,8 +565,12 @@ function App() {
       <SurveyResearch />
       <PainPoint />
       <Personas />
-      <InformationArchitecture />
       <MvpGoal />
+      <Insight />
+      <InformationArchitecture />
+      <Wireframe />
+      <UiDesign />
+      <FigmaFlowSections />
     </main>
   );
 }
